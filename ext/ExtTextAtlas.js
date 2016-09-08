@@ -56,7 +56,7 @@ ExtTextAtlas.ExportNodeData = function(node, data) {
         data["charMapFile"] = node._charMapFileName;
         data["itemWidth"] = node._itemWidth || 0;
         data["itemHeight"] = node._itemHeight || 0;
-        data["mapStartChar"] = node._mapStartChar || "0";
+        data["mapStartChar"] = node._startCharMap || "0";
     }
 };
 
@@ -127,7 +127,7 @@ ExtTextAtlas.ExportData.prototype = {
             name: "mapStartChar",
             attrs: {
             },
-            value: this._node._mapStartChar,
+            value: this._node._startCharMap,
         };
     },
 
