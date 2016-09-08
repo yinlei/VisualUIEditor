@@ -58,7 +58,10 @@ Editor.polymerElement({
             }
         }
 
+              
         t.appendChild(child);
+
+        
 
     },
     _valueChanged: function(t, e) {
