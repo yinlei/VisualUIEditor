@@ -1,0 +1,46 @@
+<dom-module id="editor-vec2">
+    <style>
+        :host {
+            display:flex;
+            flex-direction:row;
+            align-items:center
+        }
+        span.space {
+            flex:none;
+            width:6px
+        }
+    </style>
+    <template>
+        <editor-unit-input id="x" class="flex-1" 
+                            disabled="{{disabled}}" readonly="{{readonly}}"
+                            path="{{path}}.x" input-value="{{value.x}}"
+                            step="{{attrs.step}}" precision="{{attrs.precision}}"
+                            min="{{attrs.min}}" max="{{attrs.max}}"
+                            hint="X"></editor-unit-input>
+        <span class="space"></span>
+        <editor-unit-input id="y" class="flex-1" 
+                            disabled="{{disabled}}" readonly="{{readonly}}" 
+                            path="{{path}}.y" input-value="{{value.y}}" 
+                            step="{{attrs.step}}" precision="{{attrs.precision}}"
+                            min="{{attrs.min}}" max="{{attrs.max}}"
+                            hint="Y"></editor-unit-input>
+    </template>
+    <script>(() => {
+        'use strict';
+        Editor.polymerElement({
+            properties: {
+                value: {
+                    type: Object,
+                    value: function() {
+                        return {
+                            x: 0,
+                            y: 0
+                        }
+                    },
+                    notify: true
+                },
+            }
+        });
+    })();
+    </script>
+</dom-module>

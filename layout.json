@@ -1,0 +1,84 @@
+{
+    "docks": [
+        {
+            "docks": [
+                {
+                    "active": 0,
+                    "height": 483,
+                    "panels": [
+                        "nodeorder"
+                    ],
+                    "type": "panel",
+                    "width": 200
+                },
+                {
+                    "active": 0,
+                    "height": 483,
+                    "panels": [
+                        "resorder"
+                    ],
+                    "type": "panel",
+                    "width": 200
+                }
+            ],
+            "height": 969,
+            "row": false,
+            "type": "dock",
+            "width": 200
+        },
+        {
+            "docks": [
+                {
+                    "docks": [
+                        {
+                            "active": 0,
+                            "height": 766,
+                            "panels": [
+                                "renderpanel"
+                            ],
+                            "type": "panel",
+                            "width": 1293
+                        },
+                        {
+                            "active": 0,
+                            "height": 766,
+                            "panels": [
+                                "controlpanel"
+                            ],
+                            "type": "panel",
+                            "width": 200
+                        }
+                    ],
+                    "height": 766,
+                    "row": true,
+                    "type": "dock",
+                    "width": 1396
+                },
+                {
+                    "active": 0,
+                    "height": 200,
+                    "panels": [
+                        "console"
+                    ],
+                    "type": "panel",
+                    "width": 1396
+                }
+            ],
+            "height": 969,
+            "row": false,
+            "type": "dock",
+            "width": 1396
+        },
+        {
+            "active": 0,
+            "panels": [
+                "proppanel"
+            ],
+            "type": "panel",
+            "width": 300
+        }
+    ],
+    "no-collapse": true,
+    "row": true,
+    "type": "dock"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "proppanel",
+  "version": "0.1.4",
+  "description": "A simple console editor",
+  "author": "Firebox Technology",
+  "main": "main.js",
+  "main-menu": {
+    "显示/属性管理器": {
+      "icon": "panel/icon.png",
+      "accelerator": "CmdOrCtrl+3",
+      "message": "proppanel:open"
+    }
+  },
+  "panel": {
+    "main": "panel/proppanel.html",
+    "ui": "polymer",
+    "popable": false,
+    "type": "dockable",
+    "title": "属性管理器",
+    "icon": "panel/icon.png",
+    "height": 300
+  }
+}

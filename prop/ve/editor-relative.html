@@ -1,0 +1,131 @@
+
+<dom-module id="editor-relative">
+    <template>
+        <style>
+
+            /* set width and min-width at the same time to make size unchanged */
+            editor-input {
+                flex: "1";
+            }
+            editor-input::shadow #input {
+                padding: 2px;
+            }
+            span.space {
+                flex:none;
+                height:6px
+            }
+        </style>
+
+        <div class="layout horizontal center">
+            <editor-checkbox class="h-checkbox" path="{{path}}.checkTop" value="{{value.isAlignTop}}" on-value-changed="_onTopChecked">Top</editor-checkbox>
+            <editor-input id="top_input" value="{{value.top}}" path="{{path}}.top" hidden="{{!_is(value.isAlignTop)}}"></editor-input>
+        </div>
+
+        <div class="layout horizontal center">
+            <editor-checkbox value="{{value.isAlignVerticalCenter}}" path="{{path}}.checkVertical" on-value-changed="_onVerticalCenterChecked">Vertical Center</editor-checkbox>
+            <editor-input id="vertical_input" class="bottom-input" value="{{value.vertical}}" path="{{path}}.vertical" hidden="{{!_is(value.isAlignVerticalCenter)}}"></editor-input>
+        </div>
+
+        <div class="layout horizontal center">
+            <editor-checkbox class="h-checkbox" path="{{path}}.checkBottom" value="{{value.isAlignBottom}}" on-value-changed="_onBottomChecked">Bottom</editor-checkbox>
+            <editor-input id="bottom_input" value="{{value.bottom}}" path="{{path}}.bottom" on-value-changed="_onBottomChanged" hidden="{{!_is(value.isAlignBottom)}}"></editor-input>
+        </div>
+        
+        <span class="space"></span>
+
+        <div class="layout horizontal center">
+            <editor-checkbox value="{{value.isAlignLeft}}" path="{{path}}.checkLeft" on-value-changed="_onLeftChecked">Left</editor-checkbox>
+            <editor-input id="left_input" class="bottom-input" value="{{value.left}}" path="{{path}}.left" hidden="{{!_is(value.isAlignLeft)}}"></editor-input>
+        </div>
+
+        <div class="layout horizontal center">
+            <editor-checkbox value="{{value.isAlignHorizontalCenter}}" path="{{path}}.checkHorizontal" on-value-changed="_onHorizontalCenterChecked">Horizontal Center</editor-checkbox>
+            <editor-input id="horizontal_input" class="bottom-input" value="{{value.horizontal}}" path="{{path}}.horizontal" hidden="{{!_is(value.isAlignHorizontalCenter)}}"></editor-input>
+        </div>
+
+
+        <div class="layout horizontal center">
+            <editor-checkbox value="{{value.isAlignRight}}" path="{{path}}.checkRight" on-value-changed="_onRightChecked">Right</editor-checkbox>
+            <editor-input id="right_input" class="bottom-input" value="{{value.right}}" path="{{path}}.right" hidden="{{!_is(value.isAlignRight)}}"></editor-input>
+        </div>
+
+    </template>
+    <script>(() => {
+        "use strict";
+        Editor.polymerElement({
+            properties: {
+                value: {
+                    type: Object,
+                    value: {},
+                    notify: true
+                }
+            },
+
+            ready: function () {
+                this._isReady = true;
+            },
+
+            _is: function(t) {
+                return !!t
+            },
+            
+            _onTopChecked: function(t, e) {
+                if(!this._isReady) {
+                    return;
+                }
+                if(e.value == true) {
+                    this.set("value.isAlignVerticalCenter", false)
+                    this.$.top_input.confirm();
+                }
+            },
+            _onLeftChecked: function(t, e) {
+                if(!this._isReady) {
+                    return;
+                }
+                if(e.value == true) {
+                    this.set("value.isAlignHorizontalCenter", false)
+                    this.$.left_input.confirm();
+                }
+            },
+            _onRightChecked: function(t, e) {
+                if(!this._isReady) {
+                    return;
+                }
+                if(e.value == true) {
+                    this.set("value.isAlignHorizontalCenter", false)
+                    this.$.right_input.confirm();
+                }
+            },
+            _onBottomChecked: function(t, e) {
+                if(!this._isReady) {
+                    return;
+                }
+                if(e.value == true) {
+                    this.set("value.isAlignVerticalCenter", false)
+                    this.$.bottom_input.confirm();
+                }
+            },
+            _onHorizontalCenterChecked: function(t, e) {
+                if(!this._isReady) {
+                    return;
+                }
+                if(e.value) {
+                    this.set("value.isAlignLeft", false);
+                    this.set("value.isAlignRight", false);
+                    this.$.horizontal_input.confirm();
+                }
+            },
+            _onVerticalCenterChecked: function(t, e) {
+                if(!this._isReady) {
+                    return;
+                }
+                if(e.value) {
+                    this.set("value.isAlignTop", false);
+                    this.set("value.isAlignBottom", false);
+                    this.$.vertical_input.confirm();
+                }
+            }
+        });
+    })();
+    </script>
+</dom-module>

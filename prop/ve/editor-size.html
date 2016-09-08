@@ -1,0 +1,65 @@
+<dom-module id="editor-size">
+    <template>
+        <style>
+            :host {
+                display:flex;
+                flex-direction:row;
+                align-items:center
+            }
+            span.space {
+                flex:none;
+                width:6px
+            }
+        </style>
+        <div class="layout horizontal center">
+            <editor-checkbox id="check_w" value="{{value.isWidthPer}}" path="{{path}}.isWidthPer" disabled="{{!attrs.hasParent}}"></editor-checkbox>
+            <span class="space"></span>
+            <editor-unit-input id="w" class="flex-1" disabled="{{disabled}}" readonly="{{readonly}}" 
+                                    path="{{path}}.width" input-value="{{value.width}}"
+                                    step="{{attrs.step}}" precision="{{attrs.precision}}"
+                                    min="{{attrs.min}}" max="{{attrs.max}}"
+                                    hidden="{{value.isWidthPer}}" hint="W"></editor-unit-input>
+            <editor-unit-input id="wper" class="flex-1" disabled="{{disabled}}" readonly="{{readonly}}" path="{{path}}.widthPer" input-value="{{value.widthPer}}" hidden="{{!value.isWidthPer}}" hint="W%" step="1" precision="1" max="1000" min="0"></editor-unit-input>
+        </div>
+        <div class="layout horizontal center">
+            <editor-checkbox id="check_h" value="{{value.isHeightPer}}" path="{{path}}.isHeightPer" disabled="{{!attrs.hasParent}}"></editor-checkbox>
+            <span class="space"></span>
+            <editor-unit-input id="h" class="flex-1" disabled="{{disabled}}" readonly="{{readonly}}" 
+                                    path="{{path}}.height" input-value="{{value.height}}"
+                                    step="{{attrs.step}}" precision="{{attrs.precision}}"
+                                    min="{{attrs.min}}" max="{{attrs.max}}"
+                                    hidden="{{value.isHeightPer}}" hint="H"></editor-unit-input>
+            <editor-unit-input id="hper" class="flex-1" disabled="{{disabled}}" readonly="{{readonly}}" path="{{path}}.heightPer" input-value="{{value.heightPer}}" hidden="{{!value.isHeightPer}}" hint="H%" step="1" precision="1" max="1000" min="0"></editor-unit-input>
+        </div>
+    </template>
+    <script>(() => {
+        'use strict';
+        Editor.polymerElement({
+            properties: {
+                value: {
+                    type: Object,
+                    value: function() {
+                        return {
+                            width: 0,
+                            height: 0,
+                            isWidthPer:false,
+                            isHeightPer:false
+                        }
+                    },
+                    notify: true
+                },
+                disabled: {
+                    type: Boolean,
+                    value: false,
+                    reflectToAttribute: true
+                },
+                readonly: {
+                    type: Boolean,
+                    value: false,
+                    reflectToAttribute: true
+                }
+            }
+        });
+    })();
+    </script>
+</dom-module>

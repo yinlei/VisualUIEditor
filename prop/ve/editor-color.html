@@ -1,0 +1,151 @@
+<link rel="import" href="packages://color-picker/widget/color-picker.html">
+<dom-module id="editor-color">
+    <style>
+        :host {
+            display:flex;
+            position:relative;
+            box-sizing:border-box;
+            min-width:60px;
+            min-height:24px;
+            border:1px solid #666;
+            cursor:default;
+            background:#232323
+        }
+        .border {
+            position:relative;
+            border:1px solid #000;
+            width:100%
+        }
+        .rgb-wrapper {
+            position:relative;
+            height:17px
+        }
+        #iconDown {
+            font-size:10px;
+            position:absolute;
+            right:5px;
+            bottom:2px;
+            color:#000
+        }
+        #previewRGB {
+            height:17px;
+            cursor:pointer
+        }
+        #alpha {
+            width:100%;
+            height:3px;
+            background-color:#fff
+        }
+        :host[focused] {
+            border:1px solid #0c70a6
+        }
+        .mask {
+            display:none;
+            opacity:.5
+        }
+    </style>
+    <template>
+        <div class="border" on-click="_onColorClick">
+            <div class="rgb-wrapper">
+                <div id="previewRGB" style$="{{_backgroundStyle(value.r,value.g,value.b)}}"></div>
+                <i id="iconDown" class="fa fa-caret-down"></i>
+                <div id="alpha" style$="{{_alphaStyle(value.a)}}"></div>
+            </div>
+            <div class="mask fit"></div>
+        </div>
+        <content></content>
+    </template>
+    <script>(() => {
+        "use strict";
+        var chroma = require("chroma-js");
+        Editor.polymerElement({
+            behaviors: [Editor.UI.PolymerFocusable],
+            properties: {
+                value: {
+                    type: Object,
+                    value: function() {
+                        return {
+                            r: 255,
+                            g: 255,
+                            b: 255,
+                            a: 255
+                        }
+                    },
+                    notify: true
+                }
+            },
+            ready: function() {
+                this._initFocusable(this)
+            },
+            _backgroundStyle: function(r, g, b) {
+                return "background-color:" + chroma(0 | this.value.r, 0 | this.value.g, 0 | this.value.b).css("rgb") + ";"
+            },
+            _alphaStyle: function(alpha) {
+                return "width:" + alpha / 255 * 100 + "%;"
+            },
+            _onColorClick: function(event) {
+                event.stopPropagation();
+                if(this._colorPicker) {
+                    this._closeColorPicker();
+                } else {
+                    this._openColorPicker();
+                }
+            },
+            _updateColorPicker: function() {
+                window.requestAnimationFrame(function() {
+                    if (this._colorPicker) {
+                        var bodyRect = document.body.getBoundingClientRect(),
+                            curRect = this.getBoundingClientRect(),
+                            colorRect = this._colorPicker.getBoundingClientRect(),
+                            style = this._colorPicker.style;
+
+                        style.position = "fixed";
+                        style.left = curRect.right - colorRect.width + "px";
+                        style.zIndex = 999;
+
+                        if(document.body.clientHeight - curRect.bottom <= colorRect.height + 10) {
+                            style.top = curRect.top - bodyRect.top - colorRect.height - 10 + "px";
+                        } else {
+                            style.top = curRect.bottom - bodyRect.top + 10 + "px";
+                        }
+                        this._updateColorPicker()
+                    }
+                }.bind(this))
+            },
+            _openColorPicker: function() {
+                Editor.UI._DomUtils.addHitGhost("cursor", 998, function() {
+                    this._closeColorPicker()
+                }.bind(this));
+                this._colorPicker = document.createElement("color-picker");
+                this._colorPicker.noAlpha = this.noAlpha;
+                this._colorPicker.setColor({
+                    r: 0 | this.value.r,
+                    g: 0 | this.value.g,
+                    b: 0 | this.value.b,
+                    a: 0 | this.value.a
+                });
+                this._colorPicker.addEventListener("value-changed-manual", function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    var color = event.target.value;
+                    this.set("value", color);
+                }.bind(this));
+                Polymer.dom(this).appendChild(this._colorPicker);
+                this._updateColorPicker();
+            },
+            _closeColorPicker: function() {
+                var self = this;
+                if(this._colorPicker) {
+                    Polymer.dom(this).removeChild(this._colorPicker);
+                    this._colorPicker = null;
+                    Editor.UI._DomUtils.removeHitGhost();
+                    this.focus();
+                    this.async(function() {
+                        self.fire("end-editing");
+                    }, 1);
+                }
+            },
+        })
+    })();
+    </script>
+</dom-module>
