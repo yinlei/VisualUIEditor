@@ -48,7 +48,8 @@
   flex: 1;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: transparent;
-  color: #aaa;
+  color: #ddd;
+  text-shadow:#666 1px 0 0,#666 0 1px 0,#666 -1px 0 0,#666 0 -1px 0;
   pointer-events: auto;
   user-select: auto;
   cursor: auto;
@@ -61,7 +62,8 @@
   border-radius: 1px;
   font-size: 9px;
   font-weight: bold;
-  color: #d1d1d1;
+  color: #eee;
+  text-shadow:#666 1px 0 0,#666 0 1px 0,#666 -1px 0 0,#666 0 -1px 0;
   cursor: ew-resize;
   margin-right: 4px;
   padding: 0px 5px;

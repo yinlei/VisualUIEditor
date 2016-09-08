@@ -639,9 +639,9 @@
         editor.setFontSize(16);
         this._editor = editor;
 
-        this.$.zoomSlider.addEventListener('change', (event => {
+        this.$.zoomSlider.addEventListener('end-editing', (event => {
             event.stopPropagation();
-            this._zoomScaleChange(event.detail.value);
+            this._zoomScaleChange(event.target.value);
         }).bind(this));
 
         let canvas = this.$.scene.getFabricCanvas();

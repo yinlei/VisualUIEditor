@@ -11,17 +11,17 @@
   outline: none;
 }
 :host:hover {
-  border: 1px solid #848484;
+  border: 1px solid #999;
 }
 :host[focused] {
-  border: 1px solid #0c70a6;
+  border: 1px solid #228B22;
 }
 :host[invalid] {
   border: 1px solid red;
 }
 :host[disabled] {
   pointer-events: none;
-  background: #3a3a3a;
+  background: #000;
 }
 :host[disabled] #input {
   color: #787878;
@@ -37,7 +37,7 @@
   width: 100%;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: transparent;
-  color: #aaa;
+  color: #bbb;
   pointer-events: auto;
   user-select: auto;
   cursor: auto;

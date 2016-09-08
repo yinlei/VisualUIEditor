@@ -13,6 +13,8 @@
 #focus {
   position: relative;
   box-sizing: border-box;
+  
+  min-width: 50px;
   height: 21px;
   padding-left: 5px;
   padding-right: 5px;
@@ -20,9 +22,9 @@
   cursor: pointer;
 }
 #track {
-  height: 2px;
+  height: 4px;
   cursor: inherit;
-  background: #232323;
+  background: #333;
 }
 #nubbin {
   display: inline-block;
@@ -33,12 +35,12 @@
   margin-left: -5px;
   cursor: inherit;
   box-shadow: 0 1px 3px -1px #fff inset, 0 1px 1px 0 rgba(0, 0, 0, 0.9);
-  border-radius: 100%;
+  border-radius: 3px;
   background: #949494;
 }
 editor-unit-input {
-  width: 60px;
-  margin-left: 10px;
+  width: 40px;
+  margin-left: 5px;
 }
 :host.black #nubbin {
   background: black;
