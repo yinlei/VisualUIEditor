@@ -49,22 +49,25 @@
 
     <div class="toolbar">
       <ui-button class="red small transparent" on-confirm="clear">
-        <i class="icon-block"></i>
+        <i class="fa fa-trash-o"></i>
       </ui-button>
       <ui-button class="small transparent" id="openLogBtn" on-confirm="_onOpenLogFile">
-        <i class="icon-doc-text"></i>
+        <i class="fa fa-file-text-o"></i>
       </ui-button>
       <ui-input
         id="input"
         placeholder="filter"
         value="{{filterText::change}}"
+        hidden="true"
         cancelable
         unnavigable
       ></ui-input>
       <ui-checkbox
+        hidden="true"
         unnavigable
         checked="{{useRegex::change}}">Regex</ui-checkbox>
       <ui-select
+        hidden="true"
         value="{{filterOption::confirm}}"
         class="small"
         unnavigable

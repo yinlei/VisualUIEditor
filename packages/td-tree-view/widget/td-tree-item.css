@@ -69,10 +69,8 @@
 
 #name {
     flex: none;
-}
-
-#name.no-name {
-    color: #6e6e6e;
+    color: #fff;
+    text-shadow:#666 1px 0 0,#666 0 1px 0,#666 -1px 0 0,#666 0 -1px 0;
 }
 
 #content {
