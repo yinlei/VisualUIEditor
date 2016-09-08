@@ -18,7 +18,8 @@
 	text-overflow:ellipsis;
 	overflow:hidden;
 	white-space:nowrap;
-	color:#aaa
+	color:#fff;
+    text-shadow:#666 1px 0 0,#666 0 1px 0,#666 -1px 0 0,#666 0 -1px 0;
 }
 .name:hover {
 	color:#f90

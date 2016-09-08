@@ -1,44 +1,29 @@
-@color-text : #bdbdbd;
-@color-text-focus : #00a6ff;
-@color-box-bg : #232323;
-@color-box-bg-disabled : #525252;
-@color-border-normal : #888;
-@color-border-focus : #0c70a6;
-@color-value : #0c90e6;
-
 :host {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: flex-start;
-
   font-size: 12px;
   white-space: nowrap;
   text-align: left;
-
-  color: @color-text;
+  color: #bdbdbd;
   cursor: pointer;
 }
-
 :host[focused] {
-  color: @color-text-focus;
+  color: #00a6ff;
 }
-
 :host[pressed] #togglebox:after {
   opacity: 0.7;
 }
-
 :host[pressed] #box {
   opacity: 0.7;
 }
-
 #icon {
-  color: @color-text-focus;
+  color: #00a6ff;
   opacity: 0;
   transition: opacity 0.1s ease;
   background: none;
 }
-
 #box {
   display: inline-block;
   box-sizing: border-box;
@@ -46,13 +31,12 @@
   height: 13px;
   min-width: 13px;
   min-height: 13px;
-  border: 1px solid @color-border-normal;
+  border: 1px solid #888;
   font-size: 10px;
   text-align: center;
-  background: @color-box-bg;
+  background: #232323;
   cursor: pointer;
 }
-
 #togglebox {
   display: none;
   position: relative;
@@ -60,7 +44,6 @@
   min-height: 1.5rem;
   border-radius: 500rem;
 }
-
 #togglebox:before {
   position: absolute;
   content: '';
@@ -70,7 +53,6 @@
   border-radius: 500rem;
   transition: background-color 0.5s ease;
 }
-
 #togglebox:after {
   position: absolute;
   content: '';
@@ -80,214 +62,162 @@
   border-radius: 500rem;
   left: 0rem;
   transition: left 0.3s ease;
-  border: 1px solid rgb(79, 79, 79);
+  border: 1px solid #4f4f4f;
   top: -2px;
 }
-
 .text {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-indent: 5px;
 }
-
 :host[value] #togglebox:before {
   background: #818181;
 }
-
-:host[value] #togglebox:after{
+:host[value] #togglebox:after {
   left: 2.5rem;
 }
-
 :host[value] #icon {
   opacity: 1;
 }
-
 #box:hover {
-  border-color: @color-border-normal + 50%;
+  border-color: #bababa;
 }
-
 :host[focused] #box {
-  border: 1px solid @color-border-focus;
+  border: 1px solid #0c70a6;
 }
-
 :host[focused] #togglebox:after {
-  border: 1px solid @color-border-focus;
+  border: 1px solid #0c70a6;
 }
-
 :host[disabled] {
   pointer-events: none;
   opacity: 0.5;
 }
-
 :host.toggle {
   line-height: 15px;
 }
-
-:host.toggle #box{
+:host.toggle #box {
   display: none;
 }
-
-:host.toggle #togglebox{
+:host.toggle #togglebox {
   display: inline-block;
 }
-
-
-// color
-
-:host.green #icon{
+:host.green #icon {
   color: #1ccd45;
 }
-
 :host[focused].green {
   color: #1ccd45;
 }
-
 :host[focused].green #box {
   border-color: #1ccd45;
 }
-
-:host[value].green #togglebox:before{
+:host[value].green #togglebox:before {
   background-color: #1ccd45;
   color: #1ccd45;
 }
-
-:host.white #icon{
+:host.white #icon {
   color: #ffffff;
 }
-
 :host[focused].white {
   color: #ffffff;
 }
-
 :host[focused].white #box {
   border-color: #ffffff;
 }
-
-:host[value].white #togglebox:before{
+:host[value].white #togglebox:before {
   background-color: #ffffff;
   color: #ffffff;
 }
-
-:host.blue #icon{
+:host.blue #icon {
   color: #1b8bff;
 }
-
 :host[focused].blue {
   color: #1b8bff;
 }
-
 :host[focused].blue #box {
   border-color: #1b8bff;
 }
-
-:host[value].blue #togglebox:before{
+:host[value].blue #togglebox:before {
   background-color: #1b8bff;
   color: #1b8bff;
 }
-
-:host.red #icon{
+:host.red #icon {
   color: #ee1102;
 }
-
 :host[focused].red {
   color: #ee1102;
 }
-
 :host[focused].red #box {
   border-color: #ee1102;
 }
-
-:host[value].red #togglebox:before{
+:host[value].red #togglebox:before {
   background-color: #ee1102;
   color: #ee1102;
 }
-
-:host.black #icon{
+:host.black #icon {
   color: #000000;
 }
-
 :host[focused].black {
   color: #000000;
 }
-
 :host[focused].black #box {
   border-color: #000000;
 }
-
-:host[value].black #togglebox:before{
+:host[value].black #togglebox:before {
   background-color: #000000;
   color: #000000;
 }
-
-:host.yellow #icon{
+:host.yellow #icon {
   color: #ffda16;
 }
-
 :host[focused].yellow {
   color: #ffda16;
 }
-
 :host[focused].yellow #box {
   border-color: #ffda16;
 }
-
-:host[value].yellow #togglebox:before{
+:host[value].yellow #togglebox:before {
   background-color: #ffda16;
   color: #ffda16;
 }
-
-:host.orange #icon{
+:host.orange #icon {
   color: #FF7E00;
 }
-
 :host[focused].orange {
   color: #FF7E00;
 }
-
 :host[focused].orange #box {
   border-color: #FF7E00;
 }
-
-:host[value].orange #togglebox:before{
+:host[value].orange #togglebox:before {
   background-color: #FF7E00;
   color: #FF7E00;
 }
-
-:host.purple #icon{
+:host.purple #icon {
   color: #635c97;
 }
-
 :host[focused].purple {
   color: #635c97;
 }
-
 :host[focused].purple #box {
   border-color: #635c97;
 }
-
-:host[value].purple #togglebox:before{
+:host[value].purple #togglebox:before {
   background-color: #635c97;
   color: #635c97;
 }
-
 :host[disabled] #icon {
   color: #515151;
 }
-
-// no-focus
 :host[nofocus][focused] {
-  color: @color-text;
+  color: #bdbdbd;
 }
-
-:host[nofocus][focused] #box{
-  border: 1px solid @color-border-normal;
+:host[nofocus][focused] #box {
+  border: 1px solid #888;
 }
-
-:host[nofocus][focused] #togglebox:after{
-  border: 1px solid rgb(79, 79, 79);
+:host[nofocus][focused] #togglebox:after {
+  border: 1px solid #4f4f4f;
 }
-
 :host[readonly] {
   pointer-events: none;
 }
