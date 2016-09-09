@@ -5,6 +5,7 @@
 
   <template>
     <div class="border flex-1 layout horizontal center" >
+      <span id="hint" on-mousedown="_onHintMounseDown">{{hint}}</span>
       <input is="iron-input" id="input"
         type="text"
         readonly$="{{readonly}}"
@@ -15,7 +16,6 @@
         on-keydown="_onInputKeyDown"
         >
       </input>
-      <span id="hint" on-mousedown="_onHintMounseDown">{{hint}}</span>
       <div class="btngroup">
         <span class="btn"
           tabindex="-1"
