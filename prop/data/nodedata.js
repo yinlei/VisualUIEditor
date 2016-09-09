@@ -12,6 +12,7 @@ function TouchData(node) {
 }
 
 function FixNodeHor(node, step) {
+    step = fixFloatValue(step);
     node.x += step;
     if(isNum(node.left)) {
         node.left += step; 
@@ -25,6 +26,7 @@ function FixNodeHor(node, step) {
 }
 
 function FixNodeVer(node, step) {
+    step = fixFloatValue(step);
     node.y += step;
     if(isNum(node.top)) {
         node.top -= step; 
